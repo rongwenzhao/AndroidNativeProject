@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
-
             log();
         }
     }
@@ -78,9 +77,43 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void addBook_In(View view) {
+        if (connected) {
+            Book book = new Book("这是一本新书 In");
+            try {
+                bookControl.addBookIn(book);
+                Log.e(TAG, "向服务器新增了一本书");
+                Log.e(TAG, "新书名 " + book.getName());
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void addBook_Out(View view) {
+        if (connected) {
+            Book book = new Book("这是一本新书 Out");
+            try {
+                bookControl.addBookOut(book);
+                Log.e(TAG, "向服务器新增了一本书");
+                Log.e(TAG, "新书名 " + book.getName());
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     private void log() {
         for (Book book : bookList) {
             Log.e(TAG, book.toString());
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (connected) {
+            unbindService(serviceConnection);
         }
     }
 }

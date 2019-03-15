@@ -8,4 +8,8 @@ interface BookControl {
 
     void addBookInOut(inout Book book);
 
+    void addBookIn(in Book book);
+
+    void addBookOut(out Book book);
+
 }

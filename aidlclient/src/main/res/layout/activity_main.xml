@@ -21,4 +21,20 @@
         android:onClick="addBook_InOut"
         android:text="InOut 添加书籍" />
 
+    <Button
+        android:id="@+id/btn_add_book_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_add_book_inout"
+        android:onClick="addBook_In"
+        android:text="In 添加书籍" />
+
+    <Button
+        android:id="@+id/btn_add_book_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_add_book_in"
+        android:onClick="addBook_Out"
+        android:text="Out 添加书籍" />
+
 </RelativeLayout>
