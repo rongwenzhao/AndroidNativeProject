@@ -1,1 +1,1 @@
-include ':nativeCode', ':aidlserver', ':aidlclient'
+include ':nativeCode', ':aidlserver', ':aidlclient', ':hot_core'
