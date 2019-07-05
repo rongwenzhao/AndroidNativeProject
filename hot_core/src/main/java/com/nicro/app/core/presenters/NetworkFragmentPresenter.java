@@ -24,7 +24,7 @@ public class NetworkFragmentPresenter extends BaseMvpPresenter<NetworkFragmentPr
     public void requestNet(String param) {
         //进行网络请求耗時操作
 
-        //結束后調用view的回調方法
+        //结束后调用view的回调方法
         view.requestSuccess("");
     }
 
