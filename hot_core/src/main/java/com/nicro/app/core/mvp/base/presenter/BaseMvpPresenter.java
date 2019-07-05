@@ -10,6 +10,7 @@
  */
 package com.nicro.app.core.mvp.base.presenter;
 
+import com.nicro.app.core.mvp.base.model.BaseMvpModel;
 import com.nicro.app.core.mvp.base.view.BaseMvpView;
 
 /**
@@ -18,9 +19,10 @@ import com.nicro.app.core.mvp.base.view.BaseMvpView;
  * @Author: rongwenzhao
  * @Date: 2019/7/5 11:21
  */
-public abstract class BaseMvpPresenter<V extends BaseMvpView> {
+public abstract class BaseMvpPresenter<V extends BaseMvpView, M extends BaseMvpModel> {
 
-    public V view;
+    protected V view;
+    protected M model;
 
     public void attachView(V view) {
         this.view = view;

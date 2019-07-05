@@ -10,6 +10,7 @@
  */
 package com.nicro.app.core.presenters;
 
+import com.nicro.app.core.models.NetworkModel;
 import com.nicro.app.core.mvp.base.presenter.BaseMvpPresenter;
 import com.nicro.app.core.mvp.base.view.BaseMvpView;
 
@@ -19,7 +20,7 @@ import com.nicro.app.core.mvp.base.view.BaseMvpView;
  * @Author: rongwenzhao
  * @Date: 2019/7/5 13:00
  */
-public class NetworkFragmentPresenter extends BaseMvpPresenter<NetworkFragmentPresenter.NetworkFragmentView> {
+public class NetworkFragmentPresenter extends BaseMvpPresenter<NetworkFragmentPresenter.NetworkFragmentView, NetworkModel> {
 
     public void requestNet(String param) {
         //进行网络请求耗時操作

@@ -30,7 +30,7 @@ import com.nicro.app.core.presenters.NetworkFragmentPresenter;
  * @Date: 2019/7/5 14:13
  */
 public class NetworkFragment extends BaseMvpFragment<NetworkFragmentPresenter.NetworkFragmentView, NetworkFragmentPresenter>
-        implements NetworkFragmentPresenter.NetworkFragmentView, View.OnClickListener {
+        implements View.OnClickListener, NetworkFragmentPresenter.NetworkFragmentView {
 
     TextView mTextView;
     Button mClickButton;
