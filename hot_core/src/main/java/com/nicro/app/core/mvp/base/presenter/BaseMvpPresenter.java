@@ -32,4 +32,11 @@ public abstract class BaseMvpPresenter<V extends BaseMvpView, M extends BaseMvpM
         view = null;
     }
 
+    public M getModel() {
+        return model;
+    }
+
+    public void setModel(M model) {
+        this.model = model;
+    }
 }
