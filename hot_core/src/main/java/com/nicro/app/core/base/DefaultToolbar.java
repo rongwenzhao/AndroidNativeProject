@@ -10,6 +10,7 @@
  */
 package com.nicro.app.core.base;
 
+import android.support.annotation.StringRes;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -40,8 +41,8 @@ public class DefaultToolbar implements View.OnClickListener {
         mIvBack.setOnClickListener(this);
     }
 
-    public void setmTvTitle(CharSequence mTvTitle) {
-        this.mTvTitle.setText(mTvTitle);
+    public void setmTvTitle(@StringRes int resId) {
+        this.mTvTitle.setText(resId);
     }
 
     @Override
