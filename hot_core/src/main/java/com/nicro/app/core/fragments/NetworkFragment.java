@@ -35,14 +35,25 @@ public class NetworkFragment extends BaseMvpFragment<NetworkFragmentPresenter.Ne
     TextView mTextView;
     Button mClickButton;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_network, container, false);
-        mClickButton = rootView.findViewById(R.id.fragment_network_get_btn);
+    public int getLayoutId() {
+        return R.layout.fragment_network;
+    }
+
+    @Override
+    public void initViews(View view) {
+        mClickButton = view.findViewById(R.id.fragment_network_get_btn);
+        mTextView = view.findViewById(R.id.fragment_network_result_tv);
+    }
+
+    @Override
+    public void initListeners() {
         mClickButton.setOnClickListener(this);
-        mTextView = rootView.findViewById(R.id.fragment_network_result_tv);
-        return rootView;
+    }
+
+    @Override
+    public void initData() {
+
     }
 
     @Override

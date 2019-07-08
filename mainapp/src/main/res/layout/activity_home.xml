@@ -28,6 +28,12 @@
     </RelativeLayout>
 
     <!--展开之后的布局-->
+    <fragment
+        android:name="com.nicro.mainapp.fragments.NavigationFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        />
     <!--<fragment
         android:name="com.wuzhanglao.niubi.fragment.NavigationFragment"
         android:layout_width="match_parent"

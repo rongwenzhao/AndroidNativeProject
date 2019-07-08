@@ -11,8 +11,10 @@
 package com.nicro.app.core.base;
 
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
 
 /**
  * @ClassName: BaseActivity
@@ -20,11 +22,30 @@ import android.support.v7.app.AppCompatActivity;
  * @Author: rongwenzhao
  * @Date: 2019/7/5 16:46
  */
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(getLayoutId());
+        initViews();
+        DefaultToolbar toolbar = new DefaultToolbar(this);
+        initToolbar(toolbar);
+        initData();
+        initListeners();
     }
+
+    public abstract @LayoutRes
+    int getLayoutId();
+
+    public abstract void initViews();
+
+    public abstract void initToolbar(DefaultToolbar toolbar);
+
+    public abstract void initListeners();
+
+    public abstract void initData();
 
     @Override
     protected void onResume() {

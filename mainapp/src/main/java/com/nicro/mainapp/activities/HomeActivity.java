@@ -26,12 +26,35 @@ import com.nicro.mainapp.presenters.HomePresenter;
  */
 public class HomeActivity extends BaseMvpActivity implements HomePresenter.HomeActivityView {
 
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_home;
+    }
+
+    @Override
+    public void initViews() {
+
+    }
+
+    @Override
+    public void initToolbar(com.nicro.app.core.base.DefaultToolbar toolbar) {
+        toolbar.setmTvTitle("主界面");
+        toolbar.hideBackIcon();
+    }
+
+    @Override
+    public void initListeners() {
+
+    }
+
+    @Override
+    public void initData() {
+
     }
 
     @Override
