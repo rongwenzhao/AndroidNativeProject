@@ -43,7 +43,7 @@ public class HomeActivity extends BaseMvpActivity implements HomePresenter.HomeA
 
     @Override
     public void initToolbar(com.nicro.app.core.base.DefaultToolbar toolbar) {
-        toolbar.setmTvTitle("主界面");
+        toolbar.setmTvTitle(R.string.title_main);
         toolbar.hideBackIcon();
     }
 
