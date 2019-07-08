@@ -12,19 +12,33 @@ package com.nicro.mainapp.activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.nicro.app.core.base.BaseMvpActivity;
-import com.nicro.app.core.mvp.base.presenter.BaseMvpPresenter;
 import com.nicro.mainapp.R;
+import com.nicro.mainapp.adapter.TextHolderAdatpter;
+import com.nicro.mainapp.models.TextBean;
 import com.nicro.mainapp.presenters.HomePresenter;
+import com.nicro.mainapp.utils.UIUtils;
+
+import java.util.List;
 
 /**
  * @ClassName: HomeActivity
- * @Description: Home Activity 
+ * @Description: Home Activity
  * @Author: rongwenzhao
  * @Date: 2019/7/5 16:51
  */
-public class HomeActivity extends BaseMvpActivity implements HomePresenter.HomeActivityView {
+public class HomeActivity extends BaseMvpActivity<HomePresenter.HomeActivityView, HomePresenter>
+        implements HomePresenter.HomeActivityView {
+
+    private RecyclerView mRecyclerView;
+    private TextHolderAdatpter mTextAdapter;
+    private FragmentManager mFragmentManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,7 +52,8 @@ public class HomeActivity extends BaseMvpActivity implements HomePresenter.HomeA
 
     @Override
     public void initViews() {
-
+        mFragmentManager = getSupportFragmentManager();
+        mRecyclerView = findViewById(R.id.recycler_view);
     }
 
     @Override
@@ -54,16 +69,44 @@ public class HomeActivity extends BaseMvpActivity implements HomePresenter.HomeA
 
     @Override
     public void initData() {
-
+        presenter.initData();
     }
 
     @Override
-    protected BaseMvpPresenter initPresenter() {
+    protected HomePresenter initPresenter() {
         return new HomePresenter();
     }
 
     @Override
-    public void showDataListView() {
+    public void showDataListView(List<TextBean> list) {
+        mTextAdapter = new TextHolderAdatpter(this, R.layout.text_holder);
 
+        mTextAdapter.setTextHolderClickListener(new TextHolderAdatpter.TextHolderClickListener() {
+            @Override
+            public void onTextClick(int position) {
+                presenter.onItemClick(position);
+            }
+        });
+        mTextAdapter.setData(list);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(mTextAdapter);
+    }
+
+    @Override
+    public void showIntentedFragment(Fragment fragment) {
+        mFragmentManager.beginTransaction()
+                .replace(R.id.main_container, fragment)
+                .addToBackStack(null)
+                .commitAllowingStateLoss();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!UIUtils.isDoubleClick(2000)) {
+            Toast.makeText(this,"双击退出",Toast.LENGTH_SHORT).show();
+            //ToastUtil.showInfo("双击退出");
+            return;
+        }
+        super.onBackPressed();
     }
 }
