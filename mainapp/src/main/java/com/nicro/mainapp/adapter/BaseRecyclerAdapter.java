@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * @ClassName: BaseRecyclerAdapter
  * @Description: BaseRecyclerViewAdapter类
- * @Author: rongwenzhao
+ * @Author: rongwenzhao https://blog.csdn.net/qq_35605213/article/details/80176558
  * @Date: 2019/7/8 15:35
  */
 public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRecyclerHolder> {
