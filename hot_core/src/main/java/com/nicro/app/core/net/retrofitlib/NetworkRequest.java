@@ -10,12 +10,11 @@
  */
 package com.nicro.app.core.net.retrofitlib;
 
-import com.nicro.app.core.net.retrofitlib.demo.RetrofitEntity;
+import com.nicro.app.core.net.retrofitlib.demoentity.RetrofitEntity;
 
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 /**

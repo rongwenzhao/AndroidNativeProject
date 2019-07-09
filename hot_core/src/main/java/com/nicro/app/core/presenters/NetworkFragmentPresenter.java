@@ -14,11 +14,10 @@ import com.nicro.app.core.models.NetworkModel;
 import com.nicro.app.core.mvp.base.presenter.BaseMvpPresenter;
 import com.nicro.app.core.mvp.base.view.BaseMvpView;
 import com.nicro.app.core.net.retrofitlib.NetworkRequest;
-import com.nicro.app.core.net.retrofitlib.demo.RetrofitEntity;
+import com.nicro.app.core.net.retrofitlib.demoentity.RetrofitEntity;
 import com.orhanobut.logger.Logger;
 
 import rx.Subscriber;
-import rx.functions.Action1;
 
 /**
  * @ClassName: NetworkFragmentPresenter

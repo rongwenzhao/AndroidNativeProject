@@ -11,9 +11,9 @@
 package com.nicro.app.core.net.retrofitlib;
 
 import com.nicro.app.core.CoreApplication;
-import com.nicro.app.core.net.retrofitlib.demo.BaseResultEntity;
-import com.nicro.app.core.net.retrofitlib.demo.RetrofitEntity;
-import com.nicro.app.core.net.retrofitlib.demo.SubjectResult;
+import com.nicro.app.core.net.retrofitlib.demoentity.BaseResultEntity;
+import com.nicro.app.core.net.retrofitlib.demoentity.RetrofitEntity;
+import com.nicro.app.core.net.retrofitlib.demoentity.SubjectResult;
 import com.orhanobut.logger.Logger;
 
 import java.io.File;
