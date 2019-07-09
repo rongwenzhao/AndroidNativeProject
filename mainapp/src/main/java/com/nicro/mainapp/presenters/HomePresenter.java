@@ -39,7 +39,7 @@ public class HomePresenter extends BaseMvpPresenter<HomePresenter.HomeActivityVi
     }
 
     public void onItemClick(int postion) {
-        view.showIntentedFragment(new NetworkFragment());
+        view.showIntentedFragment(NetworkFragment.newInstance("args_args"));
     }
 
     public interface HomeActivityView extends BaseMvpView {

@@ -34,5 +34,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'*/
     implementation project(path: ':hot_core')
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    compileOnly  'com.android.support:recyclerview-v7:27.1.1'
+    compileOnly 'com.orhanobut:logger:2.2.0'
 }

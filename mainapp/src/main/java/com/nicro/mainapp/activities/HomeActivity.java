@@ -19,6 +19,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.nicro.app.core.base.BaseMvpActivity;
+import com.nicro.mainapp.MainApplication;
 import com.nicro.mainapp.R;
 import com.nicro.mainapp.adapter.TextHolderAdatpter;
 import com.nicro.mainapp.models.TextBean;

@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.nicro.app.core.R;
 import com.nicro.app.core.mvp.base.fragments.BaseMvpFragment;
 import com.nicro.app.core.presenters.NetworkFragmentPresenter;
+import com.orhanobut.logger.Logger;
 
 /**
  * @ClassName: NetworkFragment
@@ -34,6 +35,25 @@ public class NetworkFragment extends BaseMvpFragment<NetworkFragmentPresenter.Ne
 
     TextView mTextView;
     Button mClickButton;
+    String mStr;
+
+    public static NetworkFragment newInstance(String arg) {
+        final Bundle args = new Bundle();
+        args.putString("something", arg);
+        final NetworkFragment fragment = new NetworkFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        final Bundle args = getArguments();
+        if (args != null) {
+            mStr = args.getString("something");
+            Logger.d(mStr);
+        }
+    }
 
     @Override
     public int getLayoutId() {
@@ -63,7 +83,7 @@ public class NetworkFragment extends BaseMvpFragment<NetworkFragmentPresenter.Ne
 
     @Override
     public void onClick(View view) {
-        if(view.getId() == R.id.fragment_network_get_btn){
+        if (view.getId() == R.id.fragment_network_get_btn) {
             presenter.requestNet("");
         }
     }
