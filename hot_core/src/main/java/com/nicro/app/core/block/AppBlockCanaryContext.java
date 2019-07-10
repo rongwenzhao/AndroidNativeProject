@@ -60,7 +60,7 @@ public class AppBlockCanaryContext extends BlockCanaryContext {
 
     @Override
     public String providePath() {
-        return "BlockLogFolder";
+        return "/BlockLogFolder/";
     }
 
     @Override
