@@ -95,6 +95,11 @@ public class NetworkFragment extends BaseMvpFragment<NetworkFragmentPresenter.Ne
 
     @Override
     public void onClick(View view) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         if (view.getId() == R.id.fragment_network_get_btn) {
             presenter.requestNet("");
         }

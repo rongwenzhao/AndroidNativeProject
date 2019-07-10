@@ -12,6 +12,8 @@ package com.nicro.app.core;
 
 import android.app.Application;
 
+import com.github.moduth.blockcanary.BlockCanary;
+import com.nicro.app.core.block.AppBlockCanaryContext;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
@@ -33,7 +35,10 @@ public class CoreApplication extends Application {
         super.onCreate();
         instance = this;
         Logger.addLogAdapter(new AndroidLogAdapter());
+        //初始化LeakCanary
         setupLeakCanary();
+        //初始化BlockCanary
+        BlockCanary.install(this, new AppBlockCanaryContext()).start();
     }
 
     public static CoreApplication getInstance(){
