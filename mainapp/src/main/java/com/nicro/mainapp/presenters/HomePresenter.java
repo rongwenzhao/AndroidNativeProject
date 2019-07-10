@@ -13,10 +13,10 @@ package com.nicro.mainapp.presenters;
 
 import android.support.v4.app.Fragment;
 
+import com.nicro.app.core.AppConstants;
 import com.nicro.app.core.fragments.NetworkFragment;
 import com.nicro.app.core.mvp.base.presenter.BaseMvpPresenter;
 import com.nicro.app.core.mvp.base.view.BaseMvpView;
-import com.nicro.mainapp.AppConstants;
 import com.nicro.mainapp.models.HomeModel;
 import com.nicro.mainapp.models.TextBean;
 

@@ -10,7 +10,7 @@
  */
 package com.nicro.app.core.net.retrofitlib;
 
-import com.nicro.app.core.net.retrofitlib.demoentity.RetrofitEntity;
+import com.nicro.app.core.models.RetrofitEntity;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -38,7 +38,7 @@ public class NetworkRequest {
 
     private static class SingletonHolder {
         private static final NetworkRequest instance = new NetworkRequest();
-        private static final NetworkService video_service = NetworkService.Factory.create(NetworkService.BASE_VIDEO_URL);
+        private static final NetworkService video_service = RestClientCreator.getRetrofitClient().create(NetworkService.class);
     }
 
     private class ComposeThread<T> implements Observable.Transformer<T, T> {

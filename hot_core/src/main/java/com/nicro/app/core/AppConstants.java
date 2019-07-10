@@ -1,4 +1,4 @@
-package com.nicro.mainapp; /**
+package com.nicro.app.core; /**
  * Copyright (C), nicro有限公司
  * FileName: com.nicro.mainapp.AppConstants
  * Author: rongwenzhao
@@ -18,5 +18,8 @@ package com.nicro.mainapp; /**
 public class AppConstants {
     public static final int FIRST_LABLE = 0;
     public static final int NET_LABLE = 1;
+    /*基础url*/
+    public static final String BASE_VIDEO_URL = "https://www.izaodao.com/Api/";
+    public static final String CACHE_PATH = "okhttp_cache";
 
 }

@@ -10,26 +10,12 @@
  */
 package com.nicro.app.core.net.retrofitlib;
 
-import com.nicro.app.core.CoreApplication;
-import com.nicro.app.core.net.retrofitlib.demoentity.BaseResultEntity;
-import com.nicro.app.core.net.retrofitlib.demoentity.RetrofitEntity;
-import com.nicro.app.core.net.retrofitlib.demoentity.SubjectResult;
-import com.orhanobut.logger.Logger;
+import com.nicro.app.core.models.BaseResultEntity;
+import com.nicro.app.core.models.RetrofitEntity;
+import com.nicro.app.core.models.SubjectResult;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-import okhttp3.Cache;
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -43,9 +29,7 @@ import rx.Observable;
  * @Date: 2019/7/9 15:35
  */
 public interface NetworkService {
-    String CACHE_PATH = "okhttp_cache";
-    /*基础url*/
-    String BASE_VIDEO_URL = "https://www.izaodao.com/Api/";
+   /* String CACHE_PATH = "okhttp_cache";
 
     class Factory {
         public static final NetworkService create(String baseUrl) {
@@ -89,7 +73,7 @@ public interface NetworkService {
             }
             return response;
         }
-    }
+    }*/
 
     @POST("AppFiftyToneGraph/videoLink")
     Observable<RetrofitEntity> getAllVedioBy(@Body boolean once_no);
