@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.nicro.app.core.CoreApplication;
 import com.nicro.app.core.R;
 import com.nicro.app.core.mvp.base.fragments.BaseMvpFragment;
 import com.nicro.app.core.presenters.NetworkFragmentPresenter;
@@ -58,25 +59,12 @@ public class NetworkFragment extends BaseMvpFragment<NetworkFragmentPresenter.Ne
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final Bundle args = getArguments();
+        //leak demo
+        //CoreApplication.fragments.add(this);
         if (args != null) {
             mStr = args.getString("something");
             Logger.d(mStr);
         }
-        /*Observable.interval(1, TimeUnit.SECONDS)
-                .doOnUnsubscribe(new Action0() {
-                    @Override
-                    public void call() {
-                        Logger.d("Unsubscribing subscription from onCreate()");
-                    }
-                })
-                //Note:手动设置在activity onDestroy的时候取消订阅
-                .compose(this.<Long>bindUntilEvent(FragmentEvent.DESTROY))
-                .subscribe(new Action1<Long>() {
-                    @Override
-                    public void call(Long num) {
-                        Logger.d("Started in onResume(), running until in onDestroy(): " + num);
-                    }
-                });*/
     }
 
     @Override

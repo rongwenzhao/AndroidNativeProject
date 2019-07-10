@@ -74,11 +74,11 @@ public class RestClientCreator {
             //可以进行网络重连接等操作
             //@link 这篇博客写的很详细:http://www.jianshu.com/p/faa46bbe8a2e
             Logger.d("Thread info");
-            try {
+            /*try {
                 Thread.sleep(10000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            }
+            }*/
             Request request = chain.request();
             Response response = chain.proceed(request);
             if (NetworkUtil.isNetworkAvailable()) {

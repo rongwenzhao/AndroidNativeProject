@@ -11,7 +11,6 @@
 package com.nicro.app.core;
 
 import android.app.Application;
-import android.content.Context;
 
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
@@ -26,6 +25,8 @@ import com.squareup.leakcanary.RefWatcher;
  */
 public class CoreApplication extends Application {
     private static CoreApplication instance;
+    //leak demo
+    //public static List<Fragment> fragments = new ArrayList<>();
 
     @Override
     public void onCreate() {
