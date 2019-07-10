@@ -36,4 +36,8 @@ dependencies {
     implementation project(path: ':hot_core')
     compileOnly  'com.android.support:recyclerview-v7:27.1.1'
     compileOnly 'com.orhanobut:logger:2.2.0'
+
+    //rx-lifecycle
+    compileOnly 'com.trello:rxlifecycle:0.5.0'
+    compileOnly 'com.trello:rxlifecycle-components:0.5.0'
 }

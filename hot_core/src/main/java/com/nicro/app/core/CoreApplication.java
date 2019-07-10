@@ -3,7 +3,7 @@
  * FileName: CoreApplication
  * Author: rongwenzhao
  * Date: 2019/7/9 15:39
- * Description: core lib对应的Application类，主应用初始化
+ * Description: core lib对应的Application类
  * History:
  * <author> <time> <version> <desc>
  * 作者姓名 修改时间 版本号 描述
@@ -11,41 +11,39 @@
 package com.nicro.app.core;
 
 import android.app.Application;
+import android.content.Context;
+
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 
 /**
  * @ClassName: CoreApplication
- * @Description: core lib对应的Application类，主应用初始化
+ * @Description: core lib对应的Application类
  * @Author: rongwenzhao
  * @Date: 2019/7/9 15:39
  */
 public class CoreApplication extends Application {
-    private static Application application;
-    private static boolean debug;
+    private static CoreApplication instance;
 
-
-    public static void init(Application app) {
-        setApplication(app);
-        setDebug(true);
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        instance = this;
+        Logger.addLogAdapter(new AndroidLogAdapter());
+        setupLeakCanary();
     }
 
-    public static void init(Application app, boolean debug) {
-        setApplication(app);
-        setDebug(debug);
+    public static CoreApplication getInstance(){
+        return instance;
     }
 
-    public static Application getApplication() {
-        return application;
+    private RefWatcher setupLeakCanary() {
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return RefWatcher.DISABLED;
+        }
+        return LeakCanary.install(this);
     }
 
-    private static void setApplication(Application application) {
-        CoreApplication.application = application;
-    }
-
-    public static boolean isDebug() {
-        return debug;
-    }
-
-    public static void setDebug(boolean debug) {
-        CoreApplication.debug = debug;
-    }
 }

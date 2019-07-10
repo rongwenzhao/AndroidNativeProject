@@ -18,7 +18,7 @@ import android.view.Window;
 
 /**
  * @ClassName: BaseActivity
- * @Description: Activity的基类，一些公共操作会在这里 
+ * @Description: Activity的基类，一些公共操作会在这里
  * @Author: rongwenzhao
  * @Date: 2019/7/5 16:46
  */
@@ -55,5 +55,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

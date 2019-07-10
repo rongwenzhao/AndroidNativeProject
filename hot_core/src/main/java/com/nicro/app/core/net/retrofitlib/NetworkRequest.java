@@ -32,8 +32,9 @@ public class NetworkRequest {
         return SingletonHolder.video_service;
     }
 
-    public void getVideoTranslation(Subscriber subscriber) {
-        getVideoService().getAllVedioBy(true).compose(new ComposeThread<RetrofitEntity>()).subscribe(subscriber);
+    public Observable getVideoTranslation(Subscriber subscriber) {
+        //getVideoService().getAllVedioBy(true).compose(new ComposeThread<RetrofitEntity>()).subscribe(subscriber);
+        return getVideoService().getAllVedioBy(true).compose(new ComposeThread<RetrofitEntity>());
     }
 
     private static class SingletonHolder {
@@ -50,6 +51,4 @@ public class NetworkRequest {
                     .observeOn(AndroidSchedulers.mainThread());
         }
     }
-
-
 }

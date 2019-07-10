@@ -10,11 +10,7 @@
  */
 package com.nicro.mainapp;
 
-import android.app.Application;
-
 import com.nicro.app.core.CoreApplication;
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.Logger;
 
 /**
  * @ClassName: MainApplication
@@ -22,11 +18,9 @@ import com.orhanobut.logger.Logger;
  * @Author: rongwenzhao
  * @Date: 2019/7/9 9:36
  */
-public class MainApplication extends Application {
+public class MainApplication extends CoreApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        CoreApplication.init(this, BuildConfig.DEBUG);
-        Logger.addLogAdapter(new AndroidLogAdapter());
     }
 }

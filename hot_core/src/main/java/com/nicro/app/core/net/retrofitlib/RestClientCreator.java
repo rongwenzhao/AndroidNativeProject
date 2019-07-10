@@ -54,7 +54,7 @@ public class RestClientCreator {
                 //设置连接超时
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)
-                .cache(new Cache(new File(CoreApplication.getApplication().getCacheDir(), AppConstants.CACHE_PATH), 1024 * 1024 * 10))
+                .cache(new Cache(new File(CoreApplication.getInstance().getCacheDir(), AppConstants.CACHE_PATH), 1024 * 1024 * 10))
                 .build();
     }
 
@@ -74,6 +74,11 @@ public class RestClientCreator {
             //可以进行网络重连接等操作
             //@link 这篇博客写的很详细:http://www.jianshu.com/p/faa46bbe8a2e
             Logger.d("Thread info");
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             Request request = chain.request();
             Response response = chain.proceed(request);
             if (NetworkUtil.isNetworkAvailable()) {
