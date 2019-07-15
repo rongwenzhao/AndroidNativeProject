@@ -33,6 +33,7 @@
 
 
             <TextView
+                android:id="@+id/tv_get_new_version"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -49,6 +50,7 @@
             android:padding="8dp">
 
             <TextView
+                android:id="@+id/tv_problem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
