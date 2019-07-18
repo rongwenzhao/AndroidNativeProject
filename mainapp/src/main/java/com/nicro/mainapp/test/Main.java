@@ -1,10 +1,9 @@
 package com.nicro.mainapp.test;
 
-import android.support.v4.util.ArrayMap;
-import android.support.v4.util.LruCache;
-
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -33,7 +32,7 @@ public class Main {
             System.out.println(entry.getKey() + " " + entry.getValue());
         }*/
 
-        System.out.println("==================LruCache====================");
+        /*System.out.println("==================LruCache====================");
 
         LruCache lruCache = new LruCache(3);
         lruCache.put("name1", 1);
@@ -48,7 +47,7 @@ public class Main {
         System.out.println("name2:" + lruCache.get("name2"));
         System.out.println("name3:" + lruCache.get("name3"));
         System.out.println("name4:" + lruCache.get("name4"));
-        System.out.println("name5:" + lruCache.get("name5"));
+        System.out.println("name5:" + lruCache.get("name5"));*/
 
         /*System.out.println("==================HashMap====================");
         HashMap<String, Integer> hashMap = new HashMap<>();
@@ -59,7 +58,7 @@ public class Main {
 
         System.out.println("============================ordered access=======================================");
 
-        Map<String, Integer> linkedHashMap = new LinkedHashMap<>(16, 0.75f, true);
+        LinkedHashMap<String, Integer> linkedHashMap = new LinkedHashMap<>(16, 0.75f, true);
         linkedHashMap.put("name1", 1);
         linkedHashMap.put("name2", 2);
         linkedHashMap.put("name3", 3);
@@ -69,6 +68,31 @@ public class Main {
         linkedHashMap.put("name7", 7);
         linkedHashMap.put("name8", 8);
         linkedHashMap.put("name9", 9);
+        linkedHashMap.put("name2", 222);
+
+        printLinkedHashMap(linkedHashMap);
+
+        System.out.println("通过get方法，导致get key后的Entry到表尾");
+        linkedHashMap.put("name1", (linkedHashMap.get("name1") + 1));
+        linkedHashMap.put("name5", (linkedHashMap.get("name5") + 1));
+        linkedHashMap.get("name9");
+        linkedHashMap.put("name1", 111);
+
+        printLinkedHashMap(linkedHashMap);
+
+        System.out.println("==================get more==================");
+        linkedHashMap.get("name1");
+        printLinkedHashMap(linkedHashMap);
+
+        LinkedHashMap result = new LinkedHashMap();
+
+        System.out.println("==================反转列表元素==================");
+        reverseLinkedHashMap(linkedHashMap, result);
+
+        printLinkedHashMap(result);
+    }
+
+    public static void printLinkedHashMap(LinkedHashMap linkedHashMap) {
         Set<Map.Entry<String, Integer>> set = linkedHashMap.entrySet();
         Iterator<Map.Entry<String, Integer>> iterator = set.iterator();
         while (iterator.hasNext()) {
@@ -77,52 +101,21 @@ public class Main {
             int value = (Integer) entry.getValue();
             System.out.println("key:" + key + ",value:" + value);
         }
-
-        System.out.println("通过get方法，导致key为name1对应的Entry到表尾");
-        linkedHashMap.put("name1", (linkedHashMap.get("name1") + 1));
-        linkedHashMap.put("name5", (linkedHashMap.get("name5") + 1));
-        Set<Map.Entry<String, Integer>> set2 = linkedHashMap.entrySet();
-        Iterator<Map.Entry<String, Integer>> iterator2 = set2.iterator();
-        while (iterator2.hasNext()) {
-            Map.Entry entry = iterator2.next();
-            String key = (String) entry.getKey();
-            int value = (Integer) entry.getValue();
-            System.out.println("key:" + key + ",value:" + value);
-        }
-
-        ArrayMap<String, Integer> arrayMap = new ArrayMap();
-        arrayMap.put("name1", 1);
-
-        LRULinkedHashMap<ArrayMap, String> lruLinkedHashMap = new LRULinkedHashMap<>(5);
-        lruLinkedHashMap.put(arrayMap, "name1");
-
-        Goods goods = new Goods("name1", 1);
-        Goods goods2 = null;
-        try {
-            goods2 = (Goods) goods.clone();
-            System.out.println(goods == goods2);//false
-            System.out.println(goods);
-            System.out.println(goods2);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-
-        LRULinkedHashMap<Goods, Boolean> cache = new LRULinkedHashMap<>(5);
-        cache.put(goods, true);
-        cache.put(goods2, true);
-
-        Set<Map.Entry<Goods, Boolean>> cacheSet = cache.entrySet();
-        Iterator<Map.Entry<Goods, Boolean>> cacheIterator = cacheSet.iterator();
-        while (cacheIterator.hasNext()) {
-            Map.Entry entry = cacheIterator.next();
-            Goods key = (Goods) entry.getKey();
-            Boolean value = (Boolean) entry.getValue();
-            System.out.println("key:" + key + ",value:" + value);
-        }
-
     }
 
-    public static void maxSizeInMap(LinkedHashMap<String, Integer> linkedHashMap, int maxSize) {
-
+    //LinkedHashMap的倒序
+    public static void reverseLinkedHashMap(LinkedHashMap<String, Integer> ori, LinkedHashMap<String, Integer> result) {
+        //新的结果集合  result是传进来的
+        LinkedHashMap<String, Integer> linkResult = new LinkedHashMap<>();
+        ListIterator<Map.Entry<String, Integer>> iterator =
+                new ArrayList<>(ori.entrySet()).listIterator(ori.size());
+        while (iterator.hasPrevious()) {
+            Map.Entry<String, Integer> previous = iterator.previous();
+            String key = previous.getKey();
+            Integer value = previous.getValue();
+            linkResult.put(key, value);
+        }
+        result.clear();
+        result.putAll(linkResult);
     }
 }
