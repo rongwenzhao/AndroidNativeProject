@@ -29,8 +29,8 @@ public class GenerateValueFiles {
 
     private String dirStr = "./res";
 
-    private final static String WTemplate = "<dimen name=\"x{0}\">{1}px</dimen>\n";
-    private final static String HTemplate = "<dimen name=\"y{0}\">{1}px</dimen>\n";
+    private final static String WTemplate = "<dimen name=\"x{0}\">{1}dp</dimen>\n";
+    private final static String HTemplate = "<dimen name=\"y{0}\">{1}dp</dimen>\n";
 
     /**
      * {0}-HEIGHT
@@ -153,8 +153,8 @@ public class GenerateValueFiles {
     }
 
     public static void main(String[] args) {
-        int baseW = 320;
-        int baseH = 400;
+        int baseW = 720;
+        int baseH = 1280;
         String addition = "";
         try {
             if (args.length >= 3) {
